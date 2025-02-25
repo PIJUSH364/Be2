@@ -2,7 +2,7 @@
 
 ## Description
 
-This backend provides APIs for managing student and therir marks , including student data retrieval, and account operations. Built with Node.js, Express.js, and Sequelize ORM for PostgreSQL.
+This backend provides APIs for managing student and their marks , including student data retrieval, and account operations. Built with Node.js, Express.js, and Sequelize ORM for PostgreSQL.
 
 ## Installation
 
