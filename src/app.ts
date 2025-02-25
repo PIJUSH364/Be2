@@ -13,6 +13,7 @@ import { expressRateLimiter } from "./middleware/rateLimit";
 
 //route
 import StudentRoutes from "./api/student/Route";
+import MarkRoutes from "./api/mark/Route";
 
 // Morgan Middleware for logging
 app.use(morgan("dev"));
@@ -45,6 +46,7 @@ app.get("/", (_, res) => {
 });
 
 app.use("/api/v1/student", StudentRoutes);
+app.use("/api/v1/mark", MarkRoutes);
 
 // invalid route
 app.get("*", (_, res) => {

@@ -2,13 +2,12 @@ import { Model, DataTypes } from "sequelize";
 import { postgresConnector } from "../../../core/utils/absoluteFilePath";
 import StudentModel from "./Student";
 
-const subjects = ["Math", "Science", "English"] as const;
+const subjects = ["math", "science", "english"] as const;
 type SubjectType = (typeof subjects)[number];
 
 class MarksModel extends Model {
   id!: number;
-  studentId!: string;
-  email!: string;
+  studentId!: number;
   subject!: SubjectType;
   score!: number;
   createdAt!: Date;
@@ -51,8 +50,8 @@ MarksModel.init(
   },
   {
     sequelize: postgresConnector,
-    modelName: "student",
-    tableName: "student",
+    modelName: "mark",
+    tableName: "mark",
     timestamps: true,
     paranoid: true, // Enables soft delete
   },

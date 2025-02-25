@@ -9,5 +9,11 @@ const urlConstant = {
     filter_student_data: "/filter_student_data",
     get_student_data: "/get_student_data",
   },
+  mark: {
+    create_mark: "/create_mark",
+    update_mark: "/update_mark",
+    delete_mark: "/delete_mark",
+    get_mark: "/get_mark/:id",
+  },
 };
 export default urlConstant;
