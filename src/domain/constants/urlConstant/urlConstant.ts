@@ -1,13 +1,13 @@
 const urlConstant = {
-  user: {
-    create_user: "/create_user",
-    update_user: "/update_user",
-    delete_user: "/delete_user",
-    get_user: "/get_user/:id",
-    get_all_user: "/get_all_users",
-    search_user_details: "/search_user_details",
-    filter_user_data: "/filter_user_data",
-    get_user_data: "/get_user_data",
+  student: {
+    create_student: "/create_student",
+    update_student: "/update_student",
+    delete_student: "/delete_student",
+    get_student: "/get_student/:id",
+    get_all_student: "/get_all_students",
+    search_student_details: "/search_student_details",
+    filter_student_data: "/filter_student_data",
+    get_student_data: "/get_student_data",
   },
 };
 export default urlConstant;
