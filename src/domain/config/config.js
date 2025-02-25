@@ -19,12 +19,12 @@ const dbConfig = {
     freezeTableName: true,
   },
   // For SSL connection , uncomment the following lines
-  // dialectOptions: {
-  //   ssl: {
-  //     require: true,
-  //     rejectUnauthorized: false, // For Render or other managed databases
-  //   },
-  // },
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false, // For Render or other managed databases
+    },
+  },
 };
 module.exports = {
   development: dbConfig,
