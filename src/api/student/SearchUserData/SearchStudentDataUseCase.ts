@@ -24,11 +24,7 @@ export default class SearchStudentDataUseCase extends BaseUseCase {
 
       const data = await this.StudentRepository.find({
         where: {
-          [Op.or]: [
-            { name: { [Op.iLike]: `%${searchTerm}%` } },
-            { email: { [Op.iLike]: `%${searchTerm}%` } },
-            // { role: { [Op.iLike]: `%${searchTerm}%` } },
-          ],
+          [Op.or]: [{ name: { [Op.iLike]: `%${searchTerm}%` } }, { email: { [Op.iLike]: `%${searchTerm}%` } }],
         },
       });
 

@@ -6,7 +6,6 @@ import GetAllStudentUseCase from "./GetAllUser/GetAllStudentUseCase";
 import UpdateStudentUseCase from "./UpdateUser/UpdateStudentUseCase";
 import DeleteStudentUseCase from "./DeleteUser/DeleteStudentUseCase";
 import SearchStudentDataUseCase from "./SearchUserData/SearchStudentDataUseCase";
-import FilterStudentUseCase from "./FilterUser/FilterStudentUseCase";
 
 const router = express.Router();
 
@@ -37,15 +36,6 @@ router.delete(urlConstant.student.delete_student, async (request: Request, respo
 });
 router.get(urlConstant.student.search_student_details, async (request: Request, response: Response) => {
   const useCase = SearchStudentDataUseCase.create(request, response);
-  await useCase.executeAndHandleErrors();
-});
-router.get(urlConstant.student.filter_student_data, async (request: Request, response: Response) => {
-  const useCase = FilterStudentUseCase.create(request, response);
-  await useCase.executeAndHandleErrors();
-});
-
-router.get(urlConstant.student.filter_student_data, async (request: Request, response: Response) => {
-  const useCase = FilterStudentUseCase.create(request, response);
   await useCase.executeAndHandleErrors();
 });
 
