@@ -12,7 +12,7 @@ import db from "./domain/models/index";
 import { expressRateLimiter } from "./middleware/rateLimit";
 
 //route
-import UserRoutes from "./api/user/Route";
+import StudentRoutes from "./api/student/Route";
 
 // Morgan Middleware for logging
 app.use(morgan("dev"));
@@ -44,7 +44,7 @@ app.get("/", (_, res) => {
   res.send("sever running...");
 });
 
-app.use("/api/v1/user", UserRoutes);
+app.use("/api/v1/student", StudentRoutes);
 
 // invalid route
 app.get("*", (_, res) => {
