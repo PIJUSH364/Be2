@@ -1,18 +1,16 @@
 import { Model, DataTypes } from "sequelize";
 import { postgresConnector } from "../../../core/utils/absoluteFilePath";
+import StudentModel from "./Student";
 
-const validRoles = ["admin", "Super_Admin", "member"] as const;
-type RoleType = (typeof validRoles)[number];
-
-const status = ["active", "inactive"] as const;
-type StatusType = (typeof status)[number];
+const subjects = ["Math", "Science", "English"] as const;
+type SubjectType = (typeof subjects)[number];
 
 class MarksModel extends Model {
   id!: number;
-  name!: string;
+  studentId!: string;
   email!: string;
-  role!: RoleType;
-  status!: StatusType;
+  subject!: SubjectType;
+  score!: number;
   createdAt!: Date;
   updatedAt!: Date;
 }
@@ -24,28 +22,18 @@ MarksModel.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    name: {
-      type: DataTypes.STRING,
+    studentId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
-      validate: {
-        len: [3, 50], // Ensuring a reasonable name length
-      },
+      references: { model: StudentModel, key: "id" },
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true,
-      },
-    },
-    role: {
-      type: DataTypes.ENUM(...validRoles),
+    subject: {
+      type: DataTypes.ENUM(...subjects),
       allowNull: false,
     },
-    status: {
-      type: DataTypes.ENUM(...status),
-      defaultValue: "active",
+    score: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     createdAt: {
       type: DataTypes.DATE,
@@ -63,11 +51,14 @@ MarksModel.init(
   },
   {
     sequelize: postgresConnector,
-    modelName: "user",
-    tableName: "user",
+    modelName: "student",
+    tableName: "student",
     timestamps: true,
     paranoid: true, // Enables soft delete
   },
 );
+
+StudentModel.hasMany(MarksModel, { foreignKey: "studentId" });
+MarksModel.belongsTo(StudentModel, { foreignKey: "studentId" });
 
 export default MarksModel;

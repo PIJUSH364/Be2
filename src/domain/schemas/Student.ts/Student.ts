@@ -1,18 +1,10 @@
 import { Model, DataTypes } from "sequelize";
 import { postgresConnector } from "../../../core/utils/absoluteFilePath";
 
-const validRoles = ["admin", "Super_Admin", "member"] as const;
-type RoleType = (typeof validRoles)[number];
-
-const status = ["active", "inactive"] as const;
-type StatusType = (typeof status)[number];
-
 class StudentModel extends Model {
   id!: number;
   name!: string;
   email!: string;
-  role!: RoleType;
-  status!: StatusType;
   createdAt!: Date;
   updatedAt!: Date;
 }
@@ -27,25 +19,11 @@ StudentModel.init(
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [3, 50], // Ensuring a reasonable name length
-      },
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false,
       unique: true,
-      validate: {
-        isEmail: true,
-      },
-    },
-    role: {
-      type: DataTypes.ENUM(...validRoles),
       allowNull: false,
-    },
-    status: {
-      type: DataTypes.ENUM(...status),
-      defaultValue: "active",
     },
     createdAt: {
       type: DataTypes.DATE,
@@ -63,8 +41,8 @@ StudentModel.init(
   },
   {
     sequelize: postgresConnector,
-    modelName: "user",
-    tableName: "user",
+    modelName: "student",
+    tableName: "student",
     timestamps: true,
     paranoid: true, // Enables soft delete
   },
