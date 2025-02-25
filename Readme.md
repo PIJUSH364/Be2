@@ -1,4 +1,4 @@
-# Backend for User Management Dashboard
+# Backend for Student Management Dashboard
 
 ## Description
 
@@ -8,7 +8,7 @@ This backend provides APIs for managing users, including authentication, user da
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/PIJUSH364/assignment_BE.git
+   git clone https://github.com/PIJUSH364/Machine_BE.git
    ```
 2. Navigate to the project directory:
    ```sh
@@ -66,7 +66,7 @@ In the database configuration file, comment out the following section when runni
 To start the backend server in development mode, run:
 
 ```sh
-npm run dev
+npm run development
 ```
 
 ## Tech Stack
